@@ -1,0 +1,40 @@
+<div class="page-header" style="margin: auto; padding: 15px;">
+  <span style="font-size: 40px; font-weight: bold">
+    MicroStrategy REST API & Dossier Embedded Demo</span
+  >
+  <div
+    style="display:inline-block; float:right; position: relative; top:27px; right:-5px"
+    width="20%"
+  >
+    <div *ngIf="!isShowList()">
+      <button class="btn btn-xs btn-primary" (click)="goToListView()">
+        Go To List View
+      </button>
+    </div>
+  </div>
+</div>
+<div class="panel">
+  <div class="input-group">
+    <input
+      class="form-control"
+      placeholder="Type here to search for keyword..."
+      [(ngModel)]="searchText"
+      (ngModelChange)="getFilterList()"
+    />
+    <span class="input-group-btn"> </span>
+  </div>
+  <!--Append either list view or docView-->
+  <ng-container *ngIf="isShowList()">
+    <app-table-list
+      [docsInFolder]="filterList"
+      (openDocFrom)="openDocFromMain($event)"
+    ></app-table-list>
+  </ng-container>
+  <ng-container *ngIf="!isShowList()">
+    <app-show-doc-view
+    [docsInFolder]="filterList"
+    [currentDocId]="currentDocId"
+    [projectId]="projectId"
+    (openDocFrom)="openDocFromMain($event)"></app-show-doc-view>
+  </ng-container>
+</div>

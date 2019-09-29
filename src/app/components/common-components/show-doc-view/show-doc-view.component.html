@@ -1,0 +1,33 @@
+<div class="panel-default row">
+  <div class="col-sm-4 text-center">
+    <table class="table table-responsive table-hover">
+      <thead class="thead-inverse">
+        <tr>
+          <th width="15%">#</th>
+          <th width="20%">&nbsp;</th>
+          <th width="55%">Name</th>
+        </tr>
+      </thead>
+      <tbody align="left">
+        <tr
+          *ngFor="let object of docsInFolder; let index = index"
+          (click)="openDoc(object)"
+          [ngClass]="highlightSelection(object)"
+        >
+          <td width="15%">{{ index + 1 }}</td>
+          <td width="20%">
+            <img
+              style="width:60px; height:40px;"
+              src="../../../../assets/image/{{ object.imageUrl }}"
+            />
+          </td>
+          <td width="55%">{{ object.name }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div
+    class="col-sm-8 text-center"
+    id="dossierContainer"
+  ></div>
+</div>

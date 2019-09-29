@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+tbody {
+  display: block;
+  height: 600px;
+  overflow: auto;
+}
+thead,
+tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
